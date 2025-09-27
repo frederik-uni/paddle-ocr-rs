@@ -11,12 +11,12 @@ use ort::{inputs, session::SessionOutputs};
 use ort::{session::Session, value::Tensor};
 use std::cmp::Ordering;
 
-const MEAN_VALUES: [f32; 3] = [
+pub const MEAN_VALUES: [f32; 3] = [
     0.485_f32 * 255_f32,
     0.456_f32 * 255_f32,
     0.406_f32 * 255_f32,
 ];
-const NORM_VALUES: [f32; 3] = [
+pub const NORM_VALUES: [f32; 3] = [
     1.0_f32 / 0.229_f32 / 255.0_f32,
     1.0_f32 / 0.224_f32 / 255.0_f32,
     1.0_f32 / 0.225_f32 / 255.0_f32,
@@ -92,7 +92,7 @@ impl DbNet {
         Ok(text_boxes)
     }
 
-    fn get_text_boxes_core(
+    pub fn get_text_boxes_core(
         output_tensor: &SessionOutputs,
         rows: u32,
         cols: u32,
