@@ -1,4 +1,4 @@
-﻿#[derive(Debug)]
+#[derive(Debug)]
 pub struct ScaleParam {
     pub src_width: u32,
     pub src_height: u32,
@@ -30,6 +30,10 @@ impl ScaleParam {
     pub fn get_scale_param(src: &image::RgbImage, target_size: u32) -> Self {
         let src_width = src.width();
         let src_height = src.height();
+        Self::get_scale_param_size(src_width, src_height, target_size)
+    }
+
+    pub fn get_scale_param_size(src_width: u32, src_height: u32, target_size: u32) -> Self {
         let mut dst_width;
         let mut dst_height;
 
